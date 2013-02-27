@@ -1,24 +1,26 @@
 //
-//  FSTAppDelegate.m
-//  CS193P.HW5.FastSPoT
+//  SPoTAppDelegate.m
+//  CS193P.4.SPoT
 //
-//  Created by Felix Vigl on 27.02.13.
+//  Created by Felix Vigl on 20.02.13.
 //  Copyright (c) 2013 Felix Vigl. All rights reserved.
 //
 
-#import "FSTAppDelegate.h"
+#import "SPoTAppDelegate.h"
 
-@implementation FSTAppDelegate
+@implementation SPoTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+	    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+	    UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+	    splitViewController.delegate = (id)navigationController.topViewController;
+	}
     return YES;
 }
-
+							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 	// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

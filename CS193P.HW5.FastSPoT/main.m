@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FSTAppDelegate.h"
+#import "SPoTAppDelegate.h"
 
 int main(int argc, char *argv[])
 {
 	@autoreleasepool {
-	    return UIApplicationMain(argc, argv, nil, NSStringFromClass([FSTAppDelegate class]));
+	    return UIApplicationMain(argc, argv, nil, NSStringFromClass([SPoTAppDelegate class]));
 	}
 }
