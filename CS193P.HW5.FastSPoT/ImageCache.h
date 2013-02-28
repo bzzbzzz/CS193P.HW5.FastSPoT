@@ -10,7 +10,6 @@
 
 @interface ImageCache : NSObject
 
-
   @property (nonatomic) NSUInteger maxCacheSize;
   @property (nonatomic) NSUInteger cacheSize;
 

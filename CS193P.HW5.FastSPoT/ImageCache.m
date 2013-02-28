@@ -10,16 +10,16 @@
 
 @interface ImageCache()
 
-@property (nonatomic) NSString *cacheDirectory;
+  @property (nonatomic) NSString *cacheDirectory;
 
-@property (strong, nonatomic) NSFileManager *fileManager;
-@property (nonatomic, getter = isRunningOniPad) BOOL runningOniPad;
-
+  @property (strong, nonatomic) NSFileManager *fileManager;
+  @property (nonatomic, getter = isRunningOniPad) BOOL runningOniPad;
 
 @end
 
 
 @implementation ImageCache
+
 
 #define MAX_CACHE_SIZE 3 *1048576	// [ MB ]
 #define MAX_CACHE_IPAD_FACTOR 4		// factor of ^
@@ -32,12 +32,14 @@
 
 + (id)sharedInstance
 {
-		static dispatch_once_t pred;
-		__strong static id _sharedObject = nil;
-		dispatch_once(&pred, ^{
-			_sharedObject = [[self alloc] init];
-		});
-		return _sharedObject;
+	__strong static id _sharedObject = nil;
+	
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		_sharedObject = [[self alloc] init];
+	});
+	
+	return _sharedObject;
 }
 
 - (NSString *)cacheDirectory

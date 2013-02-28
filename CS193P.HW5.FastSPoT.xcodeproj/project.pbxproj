@@ -102,10 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				A7E8CE1216DEB01F00EEB2D0 /* Flickr */,
-				A7E8CDFE16DEAF9200EEB2D0 /* SPoTAppDelegate.h */,
-				A7E8CDFF16DEAF9200EEB2D0 /* SPoTAppDelegate.m */,
-				A7E8CE0016DEAF9200EEB2D0 /* MainStoryboard_iPhone.storyboard */,
-				A7E8CE0116DEAF9200EEB2D0 /* MainStoryboard_iPad.storyboard */,
 				A7E8CE0216DEAF9200EEB2D0 /* SPoTTagTVC.h */,
 				A7E8CE0316DEAF9200EEB2D0 /* SPoTTagTVC.m */,
 				A7E8CE0416DEAF9200EEB2D0 /* SPoTTitleTVC.h */,
@@ -116,6 +112,8 @@
 				A7E8CE0916DEAF9200EEB2D0 /* ImageViewController.m */,
 				A7E8CE1316DEBAEC00EEB2D0 /* ImageCache.h */,
 				A7E8CE1416DEBAEC00EEB2D0 /* ImageCache.m */,
+				A7E8CE0116DEAF9200EEB2D0 /* MainStoryboard_iPad.storyboard */,
+				A7E8CE0016DEAF9200EEB2D0 /* MainStoryboard_iPhone.storyboard */,
 				A7E8CDE516DEAEAA00EEB2D0 /* Supporting Files */,
 			);
 			path = CS193P.HW5.FastSPoT;
@@ -124,6 +122,8 @@
 		A7E8CDE516DEAEAA00EEB2D0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A7E8CDFE16DEAF9200EEB2D0 /* SPoTAppDelegate.h */,
+				A7E8CDFF16DEAF9200EEB2D0 /* SPoTAppDelegate.m */,
 				A7E8CDE616DEAEAA00EEB2D0 /* CS193P.HW5.FastSPoT-Info.plist */,
 				A7E8CDE716DEAEAA00EEB2D0 /* InfoPlist.strings */,
 				A7E8CDEA16DEAEAA00EEB2D0 /* main.m */,
