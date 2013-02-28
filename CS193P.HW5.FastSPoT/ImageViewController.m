@@ -8,7 +8,7 @@
 
 #import "ImageViewController.h"
 #import "FlickrFetcher.h"
-#import "ImageCache.h"
+#import "CacheForNSData.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
 
@@ -72,7 +72,7 @@
 	self.imageView.image = nil;
 	id detailItemBeingLoaded = self.detailItem;
 	
-	self.imageData = [[ImageCache sharedInstance] dataInCacheForIdentifier:detailItemBeingLoaded[@"id"]];
+	self.imageData = [[CacheForNSData sharedInstance] dataInCacheForIdentifier:detailItemBeingLoaded[@"id"]];
 	if (self.imageData) {
 		[self resetImage];
 	} else {
@@ -87,7 +87,7 @@
 			self.imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
 			
 			dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-				[[ImageCache sharedInstance] cacheData:self.imageData withIdentifier:detailItemBeingLoaded[@"id"]];
+				[[CacheForNSData sharedInstance] cacheData:self.imageData withIdentifier:detailItemBeingLoaded[@"id"]];
 			});
 			
 			dispatch_async(dispatch_get_main_queue(), ^{

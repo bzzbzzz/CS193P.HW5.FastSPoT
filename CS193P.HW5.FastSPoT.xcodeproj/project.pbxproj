@@ -24,7 +24,7 @@
 		A7E8CE0F16DEAF9200EEB2D0 /* SPoTTitleTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8CE0516DEAF9200EEB2D0 /* SPoTTitleTVC.m */; };
 		A7E8CE1016DEAF9200EEB2D0 /* SPoTRecentPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8CE0716DEAF9200EEB2D0 /* SPoTRecentPhotosTVC.m */; };
 		A7E8CE1116DEAF9200EEB2D0 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8CE0916DEAF9200EEB2D0 /* ImageViewController.m */; };
-		A7E8CE1516DEBAEC00EEB2D0 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8CE1416DEBAEC00EEB2D0 /* ImageCache.m */; };
+		A7E8CE1516DEBAEC00EEB2D0 /* CacheForNSData.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8CE1416DEBAEC00EEB2D0 /* CacheForNSData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,8 +55,8 @@
 		A7E8CE0716DEAF9200EEB2D0 /* SPoTRecentPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPoTRecentPhotosTVC.m; sourceTree = "<group>"; };
 		A7E8CE0816DEAF9200EEB2D0 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		A7E8CE0916DEAF9200EEB2D0 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
-		A7E8CE1316DEBAEC00EEB2D0 /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
-		A7E8CE1416DEBAEC00EEB2D0 /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
+		A7E8CE1316DEBAEC00EEB2D0 /* CacheForNSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheForNSData.h; sourceTree = "<group>"; };
+		A7E8CE1416DEBAEC00EEB2D0 /* CacheForNSData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheForNSData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +113,8 @@
 				A7E8CE0816DEAF9200EEB2D0 /* ImageViewController.h */,
 				A7E8CE0916DEAF9200EEB2D0 /* ImageViewController.m */,
 				A7A0D84016DF06E90006297A /* readMe.rm */,
-				A7E8CE1316DEBAEC00EEB2D0 /* ImageCache.h */,
-				A7E8CE1416DEBAEC00EEB2D0 /* ImageCache.m */,
+				A7E8CE1316DEBAEC00EEB2D0 /* CacheForNSData.h */,
+				A7E8CE1416DEBAEC00EEB2D0 /* CacheForNSData.m */,
 				A7E8CE0116DEAF9200EEB2D0 /* MainStoryboard_iPad.storyboard */,
 				A7E8CE0016DEAF9200EEB2D0 /* MainStoryboard_iPhone.storyboard */,
 				A7E8CDE516DEAEAA00EEB2D0 /* Supporting Files */,
@@ -224,7 +224,7 @@
 				A7E8CE0F16DEAF9200EEB2D0 /* SPoTTitleTVC.m in Sources */,
 				A7E8CE1016DEAF9200EEB2D0 /* SPoTRecentPhotosTVC.m in Sources */,
 				A7E8CE1116DEAF9200EEB2D0 /* ImageViewController.m in Sources */,
-				A7E8CE1516DEBAEC00EEB2D0 /* ImageCache.m in Sources */,
+				A7E8CE1516DEBAEC00EEB2D0 /* CacheForNSData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

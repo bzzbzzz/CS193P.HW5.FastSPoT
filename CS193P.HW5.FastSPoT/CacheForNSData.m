@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Felix Vigl. All rights reserved.
 //
 
-#import "ImageCache.h"
+#import "CacheForNSData.h"
 
-@interface ImageCache()
+@interface CacheForNSData()
 
   @property (nonatomic) NSString *cacheDirectory;
 
@@ -18,7 +18,7 @@
 @end
 
 
-@implementation ImageCache
+@implementation CacheForNSData
 
 
 #define MAX_CACHE_SIZE 3 *1048576	// [ MB ]
@@ -119,6 +119,7 @@
 	return [data writeToFile:targetFilePath atomically:YES];
 }
 
+
 - (NSData *)dataInCacheForIdentifier:(NSString *)identifier
 {
 	NSString * targetFilePath = [self.cacheDirectory stringByAppendingPathComponent:identifier];
@@ -131,6 +132,3 @@
 
 
 @end
-
-//NSData *thumbnailData = UIImagePNGRepresentation(thumbnailImage);
-//[identifier stringByAddingPercentEscapesUsingEncoding:kCFStringEncodingUTF8]
