@@ -86,7 +86,6 @@
 
 	cell.textLabel.text = [self titleForRow:indexPath.row];
 	cell.detailTextLabel.text = [self descriptionForRow:indexPath.row];
-	NSLog(@"%@", [self titleForRow:indexPath.row]);
     return cell;
 }
 

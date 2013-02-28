@@ -92,7 +92,7 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.20000000000000001" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="80d-fB-hvU"/>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="80d-fB-hvU" firstAttribute="leading" secondItem="26" secondAttribute="leading" type="default" id="L9o-IH-zew"/>
                             <constraint firstItem="80d-fB-hvU" firstAttribute="bottom" secondItem="26" secondAttribute="bottom" type="default" id="Ldr-2x-dES"/>

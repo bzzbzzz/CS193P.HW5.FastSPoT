@@ -8,11 +8,13 @@
 
 #import "ImageViewController.h"
 #import "FlickrFetcher.h"
+#import "ImageCache.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
 
   @property (strong, nonatomic) UIPopoverController *masterPopoverController;
   @property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView;
+  @property (nonatomic, getter = isPresentedOniPad) BOOL presentedOniPad;
 
   @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -36,10 +38,15 @@
 		
 		[self.activityIndicatorView startAnimating];
 
-		[self downloadImage];
+		[self loadImage];
     }
 	
     if (self.masterPopoverController != nil) [self.masterPopoverController dismissPopoverAnimated:YES];
+}
+- (UIActivityIndicatorView *)activityIndicatorView
+{
+	if (!_activityIndicatorView) _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+	return _activityIndicatorView;
 }
 
 - (UIImageView *)imageView
@@ -48,11 +55,6 @@
     return _imageView;
 }
 
-- (UIActivityIndicatorView *)activityIndicatorView
-{
-	if (!_activityIndicatorView) _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-	return _activityIndicatorView;
-}
 
 
 //----------------------------------------------------------------
@@ -64,27 +66,43 @@
 // adjusts the scroll view's content size to fit the image
 // sets the image as the image view's image
 
-- (void)downloadImage
+- (void)loadImage
 {
 	self.scrollView.contentSize = CGSizeZero;
 	self.imageView.image = nil;
-	id detailItemBeingDownloaded = self.detailItem;
-	UIApplication* app = [UIApplication sharedApplication];
-	app.networkActivityIndicatorVisible = YES;
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+	id detailItemBeingLoaded = self.detailItem;
 	
-		NSURL *imageURL = [FlickrFetcher urlForPhoto:self.detailItem format:FlickrPhotoFormatLarge];
-        self.imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
+	self.imageData = [[ImageCache sharedInstance] dataInCacheForIdentifier:detailItemBeingLoaded[@"id"]];
+	if (self.imageData) {
+		[self resetImage];
+	} else {
 		
-		dispatch_async(dispatch_get_main_queue(), ^{
+		FlickrPhotoFormat flickrPhotoFormat = self.isPresentedOniPad ? FlickrPhotoFormatOriginal : FlickrPhotoFormatLarge;
+		
+		UIApplication* app = [UIApplication sharedApplication];
+		app.networkActivityIndicatorVisible = YES;
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 			
-			app.networkActivityIndicatorVisible = NO;
+			NSURL *imageURL = [FlickrFetcher urlForPhoto:self.detailItem format:flickrPhotoFormat];
+			self.imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
 			
-			if ([detailItemBeingDownloaded isEqual:self.detailItem]) {
-				[self resetImage];
-			}
+			dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+				[[ImageCache sharedInstance] cacheData:self.imageData withIdentifier:detailItemBeingLoaded[@"id"]];
+			});
+			
+			dispatch_async(dispatch_get_main_queue(), ^{
+
+				app.networkActivityIndicatorVisible = NO;
+				
+				if ([detailItemBeingLoaded isEqual:self.detailItem]) {
+					[self resetImage];
+				}
+				dispatch_async(dispatch_get_main_queue(), ^{
+					
+				});
+			});
 		});
-	});
+	}
 }
 
 - (void)resetImage
@@ -110,11 +128,6 @@
 		
 		float heightRatio = self.view.bounds.size.height / self.imageView.bounds.size.height;
 		float widthRatio = self.view.bounds.size.width / self.imageView.bounds.size.width;
-		/*
-		 if (([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) && self.interfaceOrientation == (UIDeviceOrientationLandscapeLeft | UIInterfaceOrientationLandscapeRight)) {
-		 widthRatio = self.view.bounds.size.width / (self.imageView.bounds.size.width - [[[[self.splitViewController.viewControllers objectAtIndex:0] viewControllers] lastObject] topViewController].view.bounds.size.width );
-		 }
-		 */
 		
 		self.scrollView.minimumZoomScale = MIN(heightRatio, widthRatio);
 		
@@ -123,7 +136,7 @@
 		NSLog(@"\n self.imageView.frame:%@ \n self.imageView.bounds: %@", NSStringFromCGRect(self.imageView.frame), NSStringFromCGRect(self.imageView.bounds));
 		NSLog(@"\n scr.frame:%@ \n scr.bounds: %@", NSStringFromCGRect(self.scrollView.frame), NSStringFromCGRect(self.scrollView.bounds));
 		
-	} else { self.activityIndicatorView.center = self.scrollView.center; }
+	} else { self.activityIndicatorView.center = self.view.center; }
 }
 
 
@@ -149,11 +162,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.title = @"Photo";
+	self.presentedOniPad = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
+	self.title = self.detailItem ? [self.detailItem[FLICKR_PHOTO_TITLE] description] : @"Photo";
     [self.scrollView addSubview:self.imageView];
-	[self.scrollView addSubview:self.activityIndicatorView];
-    self.scrollView.minimumZoomScale = 0.2; //temporary
-    self.scrollView.maximumZoomScale = 5.0; //temporary
+	[self.view addSubview:self.activityIndicatorView];
     self.scrollView.delegate = self;
 }
 
@@ -171,7 +183,7 @@
 	if (self.detailItem) {
 		
 		[self.activityIndicatorView startAnimating];
-		[self downloadImage];
+		[self loadImage];
 	}
 }
 
