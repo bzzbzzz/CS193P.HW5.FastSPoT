@@ -10,7 +10,7 @@
 
 @interface CacheForNSData()
 
-  @property (nonatomic) NSString *cacheDirectory;
+  @property (nonatomic, readwrite) NSUInteger cacheSize;
 
   @property (strong, nonatomic) NSFileManager *fileManager;
   @property (nonatomic, getter = isRunningOniPad) BOOL runningOniPad;

@@ -11,7 +11,8 @@
 @interface CacheForNSData : NSObject
 
   @property (nonatomic) NSUInteger maxCacheSize;
-  @property (nonatomic) NSUInteger cacheSize;
+  @property (nonatomic) NSString *cacheDirectory;
+  @property (nonatomic, readonly) NSUInteger cacheSize;
 
 + (CacheForNSData *)sharedInstance;
 
