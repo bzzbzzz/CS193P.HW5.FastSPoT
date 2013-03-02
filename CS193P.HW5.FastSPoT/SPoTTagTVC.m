@@ -8,6 +8,7 @@
 
 #import "SPoTTagTVC.h"
 #import "FlickrFetcher.h"
+#import "UIApplication+NetworkActivity.h"
 
 @interface SPoTTagTVC ()
 
@@ -139,15 +140,14 @@
 	
 	__block NSArray *newPhotos = @[];
 	
-	UIApplication* app = [UIApplication sharedApplication];
-	app.networkActivityIndicatorVisible = YES;
+	[[UIApplication sharedApplication] toggleNetworkActivityIndicatorVisible:YES];
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		
 		newPhotos = [FlickrFetcher stanfordPhotos];
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
 			
-			app.networkActivityIndicatorVisible = NO;
+			[[UIApplication sharedApplication] toggleNetworkActivityIndicatorVisible:NO];
 			self.photoDataDictionaries = newPhotos;
 		});
 	});

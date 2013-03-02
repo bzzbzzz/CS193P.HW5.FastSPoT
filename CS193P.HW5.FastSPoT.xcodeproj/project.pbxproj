@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A7A0D84116DF06E90006297A /* readMe.rm in Resources */ = {isa = PBXBuildFile; fileRef = A7A0D84016DF06E90006297A /* readMe.rm */; };
+		A7DAE83516E28D4C00731603 /* UIApplication+NetworkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DAE83416E28D4C00731603 /* UIApplication+NetworkActivity.m */; };
 		A7E8CDDF16DEAEAA00EEB2D0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E8CDDE16DEAEAA00EEB2D0 /* UIKit.framework */; };
 		A7E8CDE116DEAEAA00EEB2D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E8CDE016DEAEAA00EEB2D0 /* Foundation.framework */; };
 		A7E8CDE316DEAEAA00EEB2D0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E8CDE216DEAEAA00EEB2D0 /* CoreGraphics.framework */; };
@@ -28,7 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A764C0C016E215BA004B6EF7 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		A7A0D84016DF06E90006297A /* readMe.rm */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = readMe.rm; sourceTree = SOURCE_ROOT; };
+		A7DAE83316E28D4C00731603 /* UIApplication+NetworkActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+NetworkActivity.h"; sourceTree = "<group>"; };
+		A7DAE83416E28D4C00731603 /* UIApplication+NetworkActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+NetworkActivity.m"; sourceTree = "<group>"; };
 		A7E8CDDB16DEAEAA00EEB2D0 /* CS193P.HW5.FastSPoT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CS193P.HW5.FastSPoT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E8CDDE16DEAEAA00EEB2D0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A7E8CDE016DEAEAA00EEB2D0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,6 +119,8 @@
 				A7A0D84016DF06E90006297A /* readMe.rm */,
 				A7E8CE1316DEBAEC00EEB2D0 /* CacheForNSData.h */,
 				A7E8CE1416DEBAEC00EEB2D0 /* CacheForNSData.m */,
+				A7DAE83316E28D4C00731603 /* UIApplication+NetworkActivity.h */,
+				A7DAE83416E28D4C00731603 /* UIApplication+NetworkActivity.m */,
 				A7E8CE0116DEAF9200EEB2D0 /* MainStoryboard_iPad.storyboard */,
 				A7E8CE0016DEAF9200EEB2D0 /* MainStoryboard_iPhone.storyboard */,
 				A7E8CDE516DEAEAA00EEB2D0 /* Supporting Files */,
@@ -131,6 +137,7 @@
 				A7E8CDE716DEAEAA00EEB2D0 /* InfoPlist.strings */,
 				A7E8CDEA16DEAEAA00EEB2D0 /* main.m */,
 				A7E8CDEC16DEAEAA00EEB2D0 /* CS193P.HW5.FastSPoT-Prefix.pch */,
+				A764C0C016E215BA004B6EF7 /* Common.h */,
 				A7E8CDF016DEAEAA00EEB2D0 /* Default.png */,
 				A7E8CDF216DEAEAA00EEB2D0 /* Default@2x.png */,
 				A7E8CDF416DEAEAA00EEB2D0 /* Default-568h@2x.png */,
@@ -225,6 +232,7 @@
 				A7E8CE1016DEAF9200EEB2D0 /* SPoTRecentPhotosTVC.m in Sources */,
 				A7E8CE1116DEAF9200EEB2D0 /* ImageViewController.m in Sources */,
 				A7E8CE1516DEBAEC00EEB2D0 /* CacheForNSData.m in Sources */,
+				A7DAE83516E28D4C00731603 /* UIApplication+NetworkActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

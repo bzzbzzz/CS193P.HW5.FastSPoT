@@ -9,6 +9,7 @@
 #import "ImageViewController.h"
 #import "FlickrFetcher.h"
 #import "CacheForNSData.h"
+#import "UIApplication+NetworkActivity.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
 
@@ -79,8 +80,7 @@
 		
 		FlickrPhotoFormat flickrPhotoFormat = self.isPresentedOniPad ? FlickrPhotoFormatOriginal : FlickrPhotoFormatLarge;
 		
-		UIApplication* app = [UIApplication sharedApplication];
-		app.networkActivityIndicatorVisible = YES;
+		[[UIApplication sharedApplication] toggleNetworkActivityIndicatorVisible:YES];
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 			
 			NSURL *imageURL = [FlickrFetcher urlForPhoto:self.detailItem format:flickrPhotoFormat];
@@ -92,7 +92,7 @@
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
 
-				app.networkActivityIndicatorVisible = NO;
+				[[UIApplication sharedApplication] toggleNetworkActivityIndicatorVisible:YES];
 				
 				if ([detailItemBeingLoaded isEqual:self.detailItem]) {
 					[self resetImage];
